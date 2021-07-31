@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<h1>REGISTRATION</h1>
+   {% macro render_field(field) %}
+  <dt>{{ field.label }}
+  <dd>{{ field(**kwargs)|safe }}
+  {% if field.errors %}
+    <ul class=errors>
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  </dd>
+{% endmacro %}
+<form method="POST" action="">
+        <div class = "form-group">
+            {{render_field(form.Name, class_="form-control")}}
+        </div>
+        <div class = "form-group">
+            {{render_field(form.Username, class_="form-control")}}
+        </div>
+        <div class = "form-group">
+            {{render_field(form.Email, class_="form-control")}}
+        </div>
+        <div class = "form-group">
+            {{render_field(form.Phone_Number, class_="form-control")}}
+        </div>
+        <div class = "form-group">
+            {{render_field(form.Password, class_="form-control")}}
+        </div>
+        <div class = "form-group">
+            {{render_field(form.confirm, class_="form-control")}}
+        </div>
+        <p><input type = "submit" class = "btn btn-primary" value=" Submit"></p>
+    </form>
+    <br>
+    <a href="/">HOME</a>
+
+</body>
+</html>

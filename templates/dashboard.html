@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DASHBOARD</title>
+</head>
+<body>
+    <h1>Dashboard<br> <small> Welcome {{session.username}}</small></h1>
+    <br>
+         <form method="POST" actions="">
+        <div class="form-group">
+            <label>Movie Name</label>
+            <input type="text" name="moto" class="form-control" value={{request.form.moto}}>
+        </div>
+
+
+
+
+        <button type = "submit" class = "btn btn-primary">Submit</button>
+    </form>
+
+
+    <h3> Movie : {{at}}</h3>
+
+    <h3>Our Recommendations: </h3>
+    {% for recommendations in recommendations %}
+        <p>{{ recommendations }} </p>
+    {% endfor %}
+    {% for posters in posters %}
+        <img src={{ posters }} width="460" height="345">
+    {% endfor %}
+ <a href="/"><i class='fas fa-funnel-dollar'></i>HOME</a>
+    <br>
+    {%if session.logged_in %}
+    <a href="/logout">Logout</a>
+    {% endif %}
+<hr>
+<br>
+</body>
+</html>
+

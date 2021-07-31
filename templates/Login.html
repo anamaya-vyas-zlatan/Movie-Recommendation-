@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>LOGIN</h1>
+    <form method="POST" actions="">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" value={{request.form.username}}>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" value={{request.form.password}}>
+        </div>
+        <button type = "submit" class = "btn btn-primary">Submit</button>
+    </form>
+    <br>
+    <a href="/"><i class='fas fa-funnel-dollar'></i>HOME</a>
+</body>
+</html>
