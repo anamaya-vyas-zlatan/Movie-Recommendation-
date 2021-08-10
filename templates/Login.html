@@ -1,24 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
+    * {
+        font-family: 'Open Sans', sans-serif;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: #111;
+        background-repeat: no-repeat;
+        background-image: url('https://i.im.ge/2021/08/10/91yLK.png');
+    }
+    
+    .signupSection {
+        background: url(https://source.unsplash.com/TV2gg2kZD1o/1600x800);
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 800px;
+        height: 450px;
+        text-align: center;
+        display: flex;
+        color: white;
+        box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5);
+    }
+    
+    .info {
+        width: 45%;
+        background: rgba(20, 20, 20, .8);
+        padding: 30px 0;
+        border-right: 5px solid rgba(30, 30, 30, .8);
+    }
+    
+    .info h2 {
+        padding-top: 30px;
+        font-weight: 300;
+    }
+    
+    .info p {
+        font-size: 18px;
+    }
+    
+    .info .icon {
+        font-size: 8em;
+        padding: 20px 0;
+        color: rgba(10, 180, 180, 1);
+    }
+    
+    .signupForm {
+        width: 70%;
+        padding: 30px 0;
+        background: rgba(20, 40, 40, .8);
+        transition: 0.2s;
+    }
+    
+    .signupForm h2 {
+        font-weight: 300;
+    }
+    
+    .inputFields {
+        margin: 15px 0;
+        font-size: 16px;
+        padding: 10px;
+        width: 250px;
+        border: 1px solid rgba(10, 180, 180, 1);
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        background: rgba(20, 20, 20, .2);
+        color: white;
+        outline: none;
+    }
+    
+    .noBullet {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    #join-btn {
+        border: 1px solid rgba(10, 180, 180, 1);
+        background: rgba(20, 20, 20, .6);
+        font-size: 18px;
+        color: white;
+        margin-top: 20px;
+        padding: 10px 50px;
+        cursor: pointer;
+        transition: 0.4s;
+    }
+    
+    #join-btn:hover {
+        background: rgba(20, 20, 20, .8);
+        padding: 10px 80px;
+    }
+</style>
+
 <body>
-<h1>LOGIN</h1>
-    <form method="POST" actions="">
-        <div class="form-group">
-            <label>Username</label>
-            <input type="text" name="username" class="form-control" value={{request.form.username}}>
-        </div>
-        <br>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" value={{request.form.password}}>
-        </div>
-        <button type = "submit" class = "btn btn-primary">Submit</button>
-    </form>
-    <br>
-    <a href="/"><i class='fas fa-funnel-dollar'></i>HOME</a>
+    <div class="signupSection">
+        <div class="info">
+
+            <!-- <i class="icon ion-ios-ionic-outline" aria-hidden="true"></i> -->
+
+            <img src="https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-latest-movie-poster-design-image_163485.jpg" style="width:350px; height:390px;"> </div>
+        <form action="" method="POST" class="signupForm" name="signupform">
+            <h2>Sign In</h2>
+            <ul class="noBullet">
+                <li>
+                    <label for="username"></label>
+                    <input type="text" class="inputFields" id="username" name="username" placeholder="Username" value="" oninput="return userNameValidation(this.value)" required/>
+                </li>
+                <li>
+                    <label for="password"></label>
+                    <input type="password" class="inputFields" id="password" name="password" placeholder="Password" value="" oninput="return passwordValidation(this.value)" required/>
+                </li>
+                <br>
+                <li id="center-btn">
+                    <input type="submit" id="join-btn" name="join" alt="Join" value="Login">
+                </li>
+            </ul>
+        </form>
+    </div>
 </body>
+
 </html>
