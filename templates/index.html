@@ -1,24 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>index</title>
 </head>
-<body>
+
+
+<style>
+    body {
+        background-color: #ce3635;
+        text-align: center;
+        color: #fff;
+        padding-top: 10em;
+    }
+    
+    * {
+        color: #fff;
+        text-decoration: none;
+    }
+</style>
+
+<body style="background-image: url('https://i.im.ge/2021/08/09/0BFd9.png'); background-repeat: no-repeat;">
+
+
+
     {%if session.logged_in %}
-      <li>
-        <a href="/dashboard">go to dashboard , {{session.username}}</a>
-      </li>
-{% else %}
-<a>REGISTRATIONS</a><br>
-<a href="/Register"><i class='fas fa-funnel-dollar'></i>Register</a>
-<br>
+    <div style=" margin-top: 20%; margin-bottom: 20%; ">
+    </div> <button>  <a href="/dashboard ">Go to dashboard , {{session.username}}</a></button> {% else %}
 
-<br>
 
-<a>LOGINS</a><br>
-<a href="/Login"><i class='fas fa-funnel-dollar'></i>LOGIN</a>
-<br>
-{% endif %}
+
+    <h1>
+        <p href="" class="typewrite" data-period="2000" data-type='[ "Wondering what to watch?", "Excited to know your options?", "Want to be recommended your likes?", "And rent the movies?" ]'>
+            <span class="wrap"></span>
+        </p>
+    </h1>
+    <script>
+        var TxtType = function(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtType.prototype.tick = function() {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) {
+                delta /= 2;
+            }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+
+            setTimeout(function() {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function() {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+            document.body.appendChild(css);
+        };
+    </script> <br>
+    <BR> <br>
+    <div style="color:white; width:40%; align-content:flex-start; padding-left: 20px;">
+        <h3 style="color:coral">We understand your taste and rhythm,<br>So we bring to you this dual movie system! </h3><br><br> Ever been confused with which movie to watch based on your likes and interests? Well, we understand your problem therefore we introduce this system
+        to recommend you movies similar to your searches and suggest you to buy the same along with our top trending movies!</div>
+    <br><br>
+
+    <div>
+        <button class="btn btn-danger" style="background-color: #2f1d3d; border-color:#2f1d3d;"><a href="/Register " style="color:white ">REGISTER</a></button>
+        <br>
+        <br>
+
+        <button class="btn btn-danger" style="background-color: #2f1d3d; border-color:#2f1d3d;"> <a href=" /Login " style="color:white; ">LOGIN</a></button>
+    </div>
+
+    <br> {% endif %}
+
 </body>
+
 </html>
