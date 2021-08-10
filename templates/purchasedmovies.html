@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>PURCHASED MOVIES</title>
+</head>
+
+<body>
+
+
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url('https://i.im.ge/2021/08/04/UmFKP.png');
+        }
+        
+        .topnav {
+            overflow: hidden;
+            background-color: #040C14;
+        }
+        
+        .topnav a {
+            float: left;
+            display: block;
+            color: coral;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        
+        .topnav a:hover {
+            background-color: #ffe5dc;
+            color: black;
+        }
+        
+        .topnav a.active {
+            background-color: #ffccb9;
+            color: black;
+        }
+        
+        .topnav .search-container {
+            float: right;
+        }
+        
+        .topnav input[type="text"] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+        
+        .topnav .search-container button {
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .topnav .search-container button:hover {
+            background: #ccc;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .topnav .search-container {
+                float: none;
+            }
+            .topnav a,
+            .topnav input[type="text"],
+            .topnav .search-container button {
+                float: none;
+                display: block;
+                text-align: left;
+                width: 100%;
+                margin: 0;
+                padding: 14px;
+            }
+            .topnav input[type="text"] {
+                border: 1px solid #ccc;
+            }
+        }
+        
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        
+        td,
+        /* th {
+            border: 2px solid rgb(126, 126, 241);
+        } */
+        
+        tr:nth-child(even) {
+            background-color: black;
+        }
+        
+        .topnav-right {
+            float: right;
+        }
+    </style>
+
+
+    <div class="topnav">
+        <a href="/dashboard"><small> Welcome {{session.username}}</small></a>
+        <a href="/viewcart">View Cart</a>
+        <a class="active" href="/purchasedmovies">My Movies</a> {%if session.logged_in %}
+        <div class="topnav-right"> <a href="/logout">Logout</a> {% endif %}</div>
+    </div>
+
+
+
+    <BR>
+    <BR><br>
+    <BR><br>
+    <BR>
+    <BR>
+    <BR> {% if at %}
+    <center>
+        <table>
+            {% for ok in ok %}
+            <tr>
+                <td rowspan=" 3 ">
+
+                    <center>
+
+                        <video width="320" height="240" controls>
+  <source src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+  Your browser does not support the video.
+</video>
+
+                    </center>
+                </td>
+                <td style="color:white; ">
+                    <center>
+                        <h1>{{ok.Movie_Name}}</h1>
+                    </center>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <center>
+                        <h4 style="color:coral">Get your popcorn and enjoy your movie! &#127871;</h4>
+                    </center>
+                </td>
+
+
+            </tr>
+            <tr>
+
+
+                </td>
+
+
+                <td>
+
+                    <!-- poster -->
+                    <center> <img src={{ ok.Movie_Pic_Link }} width="300 " height="275 " style="border-radius:20px 20px 20px 20px;">
+                    </center><br>
+                </td>
+            </tr>
+            {% endfor %} {% else %}
+            <p>No Movie Purchased</p>
+            {% endif %}
+
+        </table>
+
+    </center>
+
+
+</body>
+
+</html>

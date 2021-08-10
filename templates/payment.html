@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+
+
+</head>
+
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: lavender;
+        }
+        
+        .topnav {
+            overflow: hidden;
+            background-color: #040C14;
+        }
+        
+        .topnav a {
+            float: left;
+            display: block;
+            color: coral;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        
+        .topnav a:hover {
+            background-color: #ffe5dc;
+            color: black;
+        }
+        
+        .topnav a.active {
+            background-color: #ffccb9;
+            color: black;
+        }
+        
+        .topnav .search-container {
+            float: right;
+        }
+        
+        .topnav input[type="text"] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+        }
+        
+        .topnav .search-container button {
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .topnav .search-container button:hover {
+            background: #ccc;
+        }
+        
+        @media screen and (max-width: 600px) {
+            .topnav .search-container {
+                float: none;
+            }
+            .topnav a,
+            .topnav input[type="text"],
+            .topnav .search-container button {
+                float: none;
+                display: block;
+                text-align: left;
+                width: 100%;
+                margin: 0;
+                padding: 14px;
+            }
+            .topnav input[type="text"] {
+                border: 1px solid #ccc;
+            }
+        }
+        
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 250px;
+            /* Should be removed. Only for demonstration */
+        }
+        /* Clear floats after the columns */
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .column-c {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 650px;
+            /* Should be removed. Only for demonstration */
+        }
+        /* Clear floats after the columns */
+        
+        .row-c:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        .container {
+            padding: 2px 16px;
+        }
+        
+        .topnav-right {
+            float: right;
+        }
+    </style>
+
+    <div class="topnav">
+        <a class href="/dashboard"><small> Welcome {{session.username}}</small></a>
+        <a class="active" href="/payment">Make Payment</a> {%if session.logged_in %}
+        <div class="topnav-right"> <a href="/logout">Logout</a> {% endif %}
+        </div>
+    </div>
+
+    <BR>
+    <BR>
+    <BR>
+
+    <center>
+        <div class="container" style="background-color:#f9f7f3">
+            <div class="row">
+                <div class="col-xs-12 col-md-4 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <h1>You have to pay a sum of : Rs {{ans}}</h1>
+                                <center>
+                                    <h3 class="text-center">
+                                        <center>Payment Details</center>
+                                    </h3>
+                                    <img class="img-responsive cc-img" src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
+                                </center>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <form role="form">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+
+                                            <label><center>CARD NUMBER</center></label>
+                                            <div class="input-group">
+                                                <input type="tel" class="form-control" placeholder="Valid Card Number" />
+                                                <span class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-7 col-md-7">
+                                        <div class="form-group">
+                                            <label><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                            <input type="tel" class="form-control" placeholder="MM / YY" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-5 col-md-5 pull-right">
+                                        <div class="form-group">
+                                            <label>CV CODE</label>
+                                            <input type="tel" class="form-control" placeholder="CVC" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label>CARD OWNER</label>
+                                            <input type="text" class="form-control" placeholder="Card Owner Names" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class="col-xs-12"><br>
+                                    <button class="btn-dark"><a href="/make_payment" style="color:white;">Proceed</a></button>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+    </center>
+
+
+    <script>
+        function MyFunction() {
+            alert("Movie purchased succesfully!");
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
